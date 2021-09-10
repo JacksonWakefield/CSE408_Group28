@@ -37,7 +37,7 @@ for file = files'
         %PUT YOUR IMPLEMENTATION HERE
         words_line = [];
         
-        punct = [ "." ,  "," ,  ")" ,  "(" ,  "!" ,  "?",  '"' , "'", ":", ";", "'", "%", "&", "/" ];
+        punct = [ "." ,  "," ,  ")" ,  "(" ,  "!" ,  "?",  '"' , "'", ":", ";", "'", "%", "&", "/", "*", "=", "`"];
         nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]; %there must be a better way to do this ):
         
         try
@@ -45,6 +45,7 @@ for file = files'
         
             line = erase(line, nums);
             line = replace(line, "-", " "); %special case, i.e. state-of-the-art should not result in stateoftheart
+            line = replace(line, "_", " "); %special case, i.e. state_of_the_art should not result in stateoftheart
             line = lower(line);
             
             line = replace(line, " ", "  ");
@@ -61,7 +62,7 @@ for file = files'
         
         for i=1:length(words_line)
             
-            if ~ismember(words_line{i}, stopword)
+            if ~ismember(words_line{i}, stopword) && length(words_line{i}) > 1
                 voc{end+1} = words_line{i};
             end
         end
@@ -72,7 +73,7 @@ for file = files'
     fclose(fid);
     
     if finvoc
-        n = 2; % count threshold -- here you can try 1, 2, 3, etc.
+        n = 3; % count threshold -- here you can try 1, 2, 3, etc.
         
         %PUT YOUR IMPLEMENTATION HERE
         % this code is just to make your computation faster

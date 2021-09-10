@@ -55,7 +55,7 @@ for file = files'
             line = replace(line, " ", "  ");
 
             words_line = split(line);
-            %words_line = unique(words_line);
+            words_line = unique(words_line);
             
             
         catch ME %catch - any problems with the try and we see which line and where it is (and what error)
@@ -78,7 +78,7 @@ for file = files'
     fclose(fid);
     
     if finvoc
-        n = 8; % count threshold -- here you can try 1, 2, 3, etc.
+        n = ; % count threshold -- here you can try 1, 2, 3, etc.
         
         %PUT YOUR IMPLEMENTATION HERE
         % this code is just to make your computation faster

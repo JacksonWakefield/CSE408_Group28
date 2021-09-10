@@ -31,7 +31,8 @@ while line ~= -1
     for i = 1:length(words_line)
         for j = 1:length(voc)
            if strcmp(words_line{i}, voc{j})
-              feat_vec(j) = feat_vec(j) + 1;
+              disp(words_line{i});
+              disp(voc
            end
         end
     end
